@@ -1,8 +1,10 @@
 package fake
 
+import "math/rand"
+
 func randGender() string {
 	g := "male"
-	if r.Intn(2) == 0 {
+	if rand.Intn(2) == 0 {
 		g = "female"
 	}
 	return g
@@ -118,7 +120,7 @@ func FullNameWithSuffix() string {
 }
 
 func fullName(gender string) string {
-	switch r.Intn(10) {
+	switch rand.Intn(10) {
 	case 0:
 		return fullNameWithPrefix(gender)
 	case 1:

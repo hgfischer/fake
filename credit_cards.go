@@ -1,6 +1,7 @@
 package fake
 
 import (
+	"math/rand"
 	"strings"
 
 	"strconv"
@@ -28,7 +29,7 @@ func CreditCardType() string {
 		vendors = append(vendors, cc.vendor)
 	}
 
-	return vendors[r.Intn(n)]
+	return vendors[rand.Intn(n)]
 }
 
 // CreditCardNum generated credit card number according to the card number rules
@@ -40,10 +41,10 @@ func CreditCardNum(vendor string) string {
 		for v := range creditCards {
 			vendors = append(vendors, v)
 		}
-		vendor = vendors[r.Intn(len(vendors))]
+		vendor = vendors[rand.Intn(len(vendors))]
 	}
 	card := creditCards[vendor]
-	prefix := strconv.Itoa(card.prefixes[r.Intn(len(card.prefixes))])
+	prefix := strconv.Itoa(card.prefixes[rand.Intn(len(card.prefixes))])
 	num := []rune(prefix)
 	for i := 0; i < card.length-len(prefix); i++ {
 		num = append(num, genCCDigit(num))

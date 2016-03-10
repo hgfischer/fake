@@ -41,7 +41,7 @@ import (
 	"math/rand"
 	"strconv"
 	"strings"
-	"time"
+	"sync"
 )
 
 //go:generate go get github.com/mjibson/esc
@@ -50,8 +50,8 @@ import (
 // cat/subcat/lang/samples
 type samplesTree map[string]map[string][]string
 
+var samplesMutex sync.Mutex
 var samplesCache = make(samplesTree)
-var r = rand.New(rand.NewSource(time.Now().UnixNano()))
 var lang = "en"
 var useExternalData = false
 var enFallback = true
@@ -128,13 +128,15 @@ func generate(lag, cat string, fallback bool) string {
 		if ru != '#' {
 			result += string(ru)
 		} else {
-			result += strconv.Itoa(r.Intn(10))
+			result += strconv.Itoa(rand.Intn(10))
 		}
 	}
 	return result
 }
 
 func lookup(lang, cat string, fallback bool) string {
+	samplesMutex.Lock()
+	defer samplesMutex.Unlock()
 	var samples []string
 
 	if samplesCache.hasKeyPath(lang, cat) {
@@ -150,7 +152,7 @@ func lookup(lang, cat string, fallback bool) string {
 		}
 	}
 
-	return samples[r.Intn(len(samples))]
+	return samples[rand.Intn(len(samples))]
 }
 
 func populateSamples(lang, cat string) ([]string, error) {

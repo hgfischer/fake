@@ -1,5 +1,7 @@
 package fake
 
+import "math/rand"
+
 // Brand generates brand name
 func Brand() string {
 	return Company()
@@ -8,7 +10,7 @@ func Brand() string {
 // ProductName generates product name
 func ProductName() string {
 	productName := lookup(lang, "adjectives", true) + " " + lookup(lang, "nouns", true)
-	if r.Intn(2) == 1 {
+	if rand.Intn(2) == 1 {
 		productName = lookup(lang, "adjectives", true) + " " + productName
 	}
 	return productName
@@ -22,5 +24,5 @@ func Product() string {
 // Model generates model name that consists of letters and digits, optionally with a hyphen between them
 func Model() string {
 	seps := []string{"", " ", "-"}
-	return CharactersN(r.Intn(3)+1) + seps[r.Intn(len(seps))] + Digits()
+	return CharactersN(rand.Intn(3)+1) + seps[rand.Intn(len(seps))] + Digits()
 }

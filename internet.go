@@ -1,6 +1,7 @@
 package fake
 
 import (
+	"math/rand"
 	"strconv"
 	"strings"
 )
@@ -9,13 +10,13 @@ import (
 // first name + last name, letter + last names or concatenation of from 1 to 3 lowercased words
 func UserName() string {
 	gender := randGender()
-	switch r.Intn(3) {
+	switch rand.Intn(3) {
 	case 0:
 		return lookup("en", gender+"_first_names", false) + lookup(lang, gender+"_last_names", false)
 	case 1:
 		return Character() + lookup(lang, gender+"_last_names", false)
 	default:
-		return strings.Replace(WordsN(r.Intn(3)+1), " ", "_", -1)
+		return strings.Replace(WordsN(rand.Intn(3)+1), " ", "_", -1)
 	}
 }
 
@@ -53,7 +54,7 @@ func DomainZone() string {
 func IPv4() string {
 	ip := make([]string, 4)
 	for i := 0; i < 4; i++ {
-		ip[i] = strconv.Itoa(r.Intn(256))
+		ip[i] = strconv.Itoa(rand.Intn(256))
 	}
 	return strings.Join(ip, ".")
 }

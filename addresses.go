@@ -1,6 +1,9 @@
 package fake
 
-import "strconv"
+import (
+	"math/rand"
+	"strconv"
+)
 
 // Continent generates random continent
 func Continent() string {
@@ -15,7 +18,7 @@ func Country() string {
 // City generates random city
 func City() string {
 	city := lookup(lang, "cities", true)
-	switch r.Intn(5) {
+	switch rand.Intn(5) {
 	case 0:
 		return join(cityPrefix(), city)
 	case 1:
@@ -51,7 +54,7 @@ func Street() string {
 
 // StreetAddress generates random street name along with building number
 func StreetAddress() string {
-	return join(Street(), strconv.Itoa(r.Intn(100)))
+	return join(Street(), strconv.Itoa(rand.Intn(100)))
 }
 
 func streetSuffix() string {

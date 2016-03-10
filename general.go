@@ -1,5 +1,7 @@
 package fake
 
+import "math/rand"
+
 var lowerLetters = []rune("abcdefghijklmnopqrstuvwxyz")
 var upperLetters = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 var numeric = []rune("0123456789")
@@ -22,9 +24,9 @@ func text(atLeast, atMost int, allowLower, allowUpper, allowNumeric, allowSpecia
 	}
 
 	result := []rune{}
-	nTimes := r.Intn(atMost-atLeast+1) + atLeast
+	nTimes := rand.Intn(atMost-atLeast+1) + atLeast
 	for i := 0; i < nTimes; i++ {
-		result = append(result, allowedChars[r.Intn(len(allowedChars))])
+		result = append(result, allowedChars[rand.Intn(len(allowedChars))])
 	}
 	return string(result)
 }
@@ -50,20 +52,20 @@ func Color() string {
 func DigitsN(n int) string {
 	digits := make([]rune, n)
 	for i := 0; i < n; i++ {
-		digits[i] = numeric[r.Intn(len(numeric))]
+		digits[i] = numeric[rand.Intn(len(numeric))]
 	}
 	return string(digits)
 }
 
 // Digits returns from 1 to 5 digits as a string
 func Digits() string {
-	return DigitsN(r.Intn(5) + 1)
+	return DigitsN(rand.Intn(5) + 1)
 }
 
 func hexDigitsStr(n int) string {
 	var num []rune
 	for i := 0; i < n; i++ {
-		num = append(num, hexDigits[r.Intn(len(hexDigits))])
+		num = append(num, hexDigits[rand.Intn(len(hexDigits))])
 	}
 	return string(num)
 }
