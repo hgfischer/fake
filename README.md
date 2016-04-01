@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/antonholmquist/jason.svg?style=flat)](https://travis-ci.org/antonholmquist/jason) [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/icrowley/fake) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/icrowley/fake/master/LICENSE)
+[![Build Status](https://img.shields.io/travis/antonholmquist/jason.svg?style=flat)](https://travis-ci.org/antonholmquist/jason) [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/hgfischer/fake) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/hgfischer/fake/master/LICENSE)
 
 Fake
 ====
@@ -16,14 +16,14 @@ Fake embeds samples data files unless you call `UseExternalData(true)` in order 
 ## Install
 
 ```shell
-go get github.com/icrowley/fake
+go get github.com/hgfischer/fake
 ```
 
 ## Import
 
 ```go
 import (
-  "github.com/icrowley/fake"
+  "github.com/hgfischer/fake"
 )
 ```
 
@@ -31,7 +31,7 @@ import (
 
 Documentation can be found at godoc:
 
-https://godoc.org/github.com/icrowley/fake
+https://godoc.org/github.com/hgfischer/fake
 
 ## Test
 To run the project tests:
@@ -77,7 +77,7 @@ fake.UseExternalData(true)
 password := fake.Paragraph()
 ```
 
-### Author
+### Original Author
 
 Dmitry Afanasyev,
 http://twitter.com/i_crowley
